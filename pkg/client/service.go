@@ -2,6 +2,8 @@ package client
 
 import "context"
 
+//go:generate mockgen -destination ../mocks/mock_service.go -package=mocks . Service
+
 // Service is a service interface.
 type Service interface {
 	// Add adds client.

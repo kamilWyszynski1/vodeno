@@ -24,3 +24,7 @@ lint: lint-install
 .PHONY: test
 test:
 	$(GO) test -race -v $(addprefix ./,$(addsuffix ...,$(SRCDIRS)))
+
+.PHONY: generate
+generate:
+	$(GO) generate ./...

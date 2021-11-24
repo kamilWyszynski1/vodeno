@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"os"
 	"strings"
 	"time"
 
@@ -62,19 +61,19 @@ const (
 // Load loads configuration from the specified file.
 func Load() (*Config, error) {
 	viper := viper.New()
-	viper.SetConfigName("config")
-
-	configPath := os.Getenv(configPathEnv)
-	if configPath != "" {
-		viper.SetConfigFile(configPath)
-	}
-
 	viper.SetDefault("db.conn_max_lifetime_secs", defaultConnMaxLifetimeSecs)
 	viper.SetDefault("db.max_open_conns", defaultMaxOpenConns)
 	viper.SetDefault("db.max_idle_conns", defaultMaxIdleConns)
 
-	viper.SetConfigType("yaml")
+	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+
+	viper.SetConfigType("yaml")
+
+	mode := viper.GetString("mode")
+	viper.SetConfigName(mode)
+
+	viper.AddConfigPath("./config") // for go run cmd/main.go
 
 	if err := viper.ReadInConfig(); err != nil {
 		return nil, err

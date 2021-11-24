@@ -32,6 +32,7 @@ func NewWatcher(logger *logrus.Logger, repo Repository, tp time.Duration) *Watch
 // Start starts clearing goroutine.
 func (w *Watcher) Start(ctx context.Context) {
 	w.wg.Add(1)
+	w.log.WithField("tick", w.tickPeriod.String()).Info("starting")
 	go func() {
 		defer w.wg.Done()
 		ticker := time.NewTicker(w.tickPeriod)

@@ -5,8 +5,8 @@
 
 
 ## Concerns
-1. There are no test for every file because I found it pointless. One example test file that covers every tested case 
-   is enough for presentation purposes.
+1. There are no test for every file because I found it pointless. One example test that covers 
+   every tested case is enough for presentation purposes.
 2. Cursor - I've implemented simple cursor that bases on `where` and `order by` statements.
    It's simple and fast enough for that project. Along with index on `id` column
    even with large amount of data I should be fast enough.

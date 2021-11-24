@@ -9,4 +9,4 @@ db:
   ssl_enabled: false
 
 watcher:
-  tick_period: 10s
+  tick_period: 1m

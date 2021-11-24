@@ -10,4 +10,4 @@ CREATE TABLE entry (
 -- listing will be faster :)
 CREATE INDEX entry_id ON entry(id);
 
-CREATE UNIQUE INDEX entry_payload ON client(title, content);
+CREATE UNIQUE INDEX entry_payload ON entry(title, content);

@@ -11,9 +11,10 @@ import (
 )
 
 const (
-	tableName = "client" // client table name.
+	tableName = "entry" // client table name.
 
 	duplicateErrorCode = "23505"
+	doesNotExistCode   = "42P01"
 )
 
 var (
