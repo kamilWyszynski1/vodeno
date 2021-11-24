@@ -17,8 +17,7 @@ FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 # Copy our static executable.
 COPY --from=builder /go/bin/main /go/bin/main
-COPY --from=builder /go/src/vodeno/config/config.yaml config.yaml
+COPY --from=builder /go/src/vodeno/config/config.yaml config/config.yaml
 
-ENV CONFIG_PATH=config.yaml
 # Run the hello binary.
 ENTRYPOINT ["/go/bin/main"]
